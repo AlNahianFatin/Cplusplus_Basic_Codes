@@ -1,18 +1,45 @@
 #include<iostream>
 using namespace std;
+
 int main()
 {
-    char word[30];
-    cout<<"Enter a word : ";
-    cin>>word;
-    cout<<"The vowels are ";
-    for(int i=0;i<30;i++)
+    string word, vowels;
+    cout << "Enter a word : ";
+    cin >> word;
+
+    char ch;
+    for(int i = 0; i < word.length(); i++)
     {
-        word[i]=tolower(word[i]);
-        if(word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' || word[i] == 'u')
+        ch = tolower(word[i]);
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
         {
-            cout<<"'"<<word[i]<<"' ";
+            bool alreadyExists = false;
+            for(int j = 0; j < vowels.length(); j++)
+            {
+                if(tolower(vowels[j]) == ch)
+                {
+                    alreadyExists = true;
+                    break;
+                }
+            }
+
+            if(!alreadyExists)
+                vowels += word[i];
         }
     }
-    return 0;
+
+    if(vowels.length() == 0)
+        cout << "There are no vowels in the word!" << endl;
+    else
+    {
+        int lastVowelIndex = vowels.length() - 1;
+        cout << "The vowels are ";
+        for(int j = 0; j < vowels.length(); j++)
+        {
+            if (j != lastVowelIndex)
+                cout << "'" << vowels[j] << "', ";
+            else
+                cout << "'" << vowels[j] << "' ";
+        }
+    }
 }
