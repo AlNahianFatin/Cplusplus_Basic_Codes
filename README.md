@@ -1,2 +1,2 @@
-# Codes
-<br>This folder contains my C++ codes
+# Cplusplus_Basic_Codes
+<br>This repository contains my C++ codes
